@@ -62,11 +62,48 @@ class LinkedList<T> {
 
     return temp.head; // return the removed node
   };
+
+  // unshift method. Adds a new node at the first of the list.
+  unshift(value: T) {
+    let newNode = new LinkedListNode<T>(value);
+    // if list is empty
+    if (!this.head) {
+      this.head = newNode;  // --> update head node
+      this.tail = newNode;  // --> update tail node
+    } else {
+      // add to first node
+      newNode.next = this.head; // --> link new node to current head
+      this.head = newNode;  // --> update head node
+    }
+    this.length++;  // --> increment length
+    return this;  // --> return the list
+  };
+  
+  // shift method. Removes and returns the first node of the list.
+  shift(): T {
+    // --if list is empty
+    if(!this.head){
+      return null;
+    }
+    let temp = this.head;  // --> update temp node with head node
+    this.head = this.head.next;  // --> update head node with next node
+    temp.next = null;  // --> remove link to next node
+    this.length--;  // --> decrement length
+    // --if list has only one node
+    if(this.length === 0) {
+      this.tail = null;
+    };
+    return temp.head;  // --> return the removed node
+  };
+  
     
   
 };
 
 const myLinkedList = new LinkedList(1);
 myLinkedList.push(12);
-myLinkedList.pop();
+// myLinkedList.pop();
+// myLinkedList.unshift(0);
 console.log(myLinkedList);
+// myLinkedList.shift();
+console.log(myLinkedList.shift());
