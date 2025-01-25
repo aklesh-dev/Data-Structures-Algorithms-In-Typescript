@@ -2,9 +2,11 @@
 class LinkedListNode<T> {
   head: T;
   next: LinkedListNode<T> | null;
+  value: T;
   constructor(value: T) {
     this.head = value;
     this.next = null;
+    this.value = value;
   }
 }
 
@@ -139,15 +141,38 @@ class LinkedList<T> {
     return null;
   };
 
+  // set method. set value in requested index.
+  set(index: number, value: T) {
+    // Check if the index is valid (not negative and not larger than the list length)
+    if(index < 0 || index > this.length) {
+      return console.info("Invalid index !")
+    };
+
+    let temp = this.elementOf(index);  // --> get element method used.
+
+    if (temp && 'value' in temp) {
+      // --Set the value of the found node to the new value
+      temp.value = value;
+      return true;
+    } else{
+      console.info("Node not found at index!");
+      return false;
+    }
+    
+  };
+
 };
 
 const myLinkedList = new LinkedList(0);
 myLinkedList.push(1);
 myLinkedList.push(2);
 myLinkedList.push(3);
+console.log(myLinkedList)
+console.log(myLinkedList.set(3, 20))
+console.log(myLinkedList)
 // myLinkedList.pop();
 // myLinkedList.unshift(0);
 // console.log(myLinkedList);
-console.log("get element:",myLinkedList.elementOf(3));
+// console.log("get element:",myLinkedList.elementOf(3));
 // myLinkedList.shift();
 // console.log(myLinkedList.shift());
