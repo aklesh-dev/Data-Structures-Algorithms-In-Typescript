@@ -97,7 +97,31 @@ class LinkedList<T> {
   };
   
     
-  
+  // get first method. return the first element.
+  getFirst():T | null {
+    if(!this.head){
+      return null;
+    }
+
+    return this.head.head;
+  };
+
+  // get last method. return last element.
+  getLast():T | null {
+    if(!this.head) {
+      return null;
+    };
+
+    let temp = this.head;
+
+    while(temp) {
+      if(!temp.next){
+        return temp.head;
+      }
+      temp = temp.next;
+    }
+  }
+
 };
 
 const myLinkedList = new LinkedList(1);
@@ -105,5 +129,6 @@ myLinkedList.push(12);
 // myLinkedList.pop();
 // myLinkedList.unshift(0);
 console.log(myLinkedList);
+console.log("get element:",myLinkedList.getLast());
 // myLinkedList.shift();
-console.log(myLinkedList.shift());
+// console.log(myLinkedList.shift());
