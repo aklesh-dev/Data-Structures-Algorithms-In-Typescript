@@ -122,13 +122,32 @@ class LinkedList<T> {
     }
   }
 
+  // get element by index method
+  elementOf(index: number) {
+    let counter = 0;
+    let tempNode = this.head;   // --> temp pointer starting at the head
+    
+
+    while (tempNode) {   // --> loop continues as long as there are nodes in the list.
+      if (counter === index) {  // --> checks if current position match the requested index if true returns the current node.
+        return tempNode;
+      }
+      counter ++;  // increment the counter
+      tempNode = tempNode.next;  // --> move the temp pointer to the next node.
+    }
+    // -- If the loop completes without finding the requested index, it returns null.
+    return null;
+  };
+
 };
 
-const myLinkedList = new LinkedList(1);
-myLinkedList.push(12);
+const myLinkedList = new LinkedList(0);
+myLinkedList.push(1);
+myLinkedList.push(2);
+myLinkedList.push(3);
 // myLinkedList.pop();
 // myLinkedList.unshift(0);
-console.log(myLinkedList);
-console.log("get element:",myLinkedList.getLast());
+// console.log(myLinkedList);
+console.log("get element:",myLinkedList.elementOf(3));
 // myLinkedList.shift();
 // console.log(myLinkedList.shift());
