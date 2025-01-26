@@ -184,6 +184,19 @@ class LinkedList<T> {
 
   };
 
+  // size method. return the length of the list.
+  size(): number {
+    let counter = 0;
+    let temp = this.head;
+
+    while (temp) {
+      counter++;
+      temp = temp.next;
+    }
+
+    return counter;
+  };
+
 };
 
 const myLinkedList = new LinkedList(0);
@@ -191,8 +204,9 @@ myLinkedList.push(1);
 myLinkedList.push(2);
 myLinkedList.push(3);
 // console.log(myLinkedList)
-console.log(myLinkedList.insert(0, 20))
-console.log(myLinkedList)
+// console.log(myLinkedList.insert(0, 20))
+// console.log(myLinkedList)
+console.log("Size of the list:", myLinkedList.size());
 // myLinkedList.pop();
 // myLinkedList.unshift(0);
 // console.log(myLinkedList);
