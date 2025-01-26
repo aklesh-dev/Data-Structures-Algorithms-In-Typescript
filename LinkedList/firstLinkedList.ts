@@ -197,16 +197,22 @@ class LinkedList<T> {
     return counter;
   };
 
+  // clear method.
+  clear(): void {
+    this.head = null;
+    return console.log("List clear!")
+  };
+
 };
 
 const myLinkedList = new LinkedList(0);
 myLinkedList.push(1);
 myLinkedList.push(2);
 myLinkedList.push(3);
-// console.log(myLinkedList)
+console.log(myLinkedList.clear())
 // console.log(myLinkedList.insert(0, 20))
 // console.log(myLinkedList)
-console.log("Size of the list:", myLinkedList.size());
+// console.log("Size of the list:", myLinkedList.size());
 // myLinkedList.pop();
 // myLinkedList.unshift(0);
 // console.log(myLinkedList);
