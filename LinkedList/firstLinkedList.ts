@@ -161,14 +161,37 @@ class LinkedList<T> {
     
   };
 
+  // insert method. insert value at requested index.
+  insert(index: number, value: T) {
+    // check if value is 0 then call unshift method. which add new node at the first of the list.
+    if (index === 0) {  
+      return this.unshift(value);
+    }
+    // add new node at the end of the list.
+    else if (index === this.length) {
+      return this.push(value);
+    }
+
+    const newNode = new LinkedListNode(value);  // --> create new node with value.
+
+    // Uses the elementOf method to get the node right before the desired position (index - 1).
+    const temp = this.elementOf(index - 1); 
+
+    newNode.next = temp.next;  // --> link new node to next node of the previous node.
+    temp.next = newNode;  // --> link previous node to new node.
+    this.length++;  // --> increment length.
+    return true;  
+
+  };
+
 };
 
 const myLinkedList = new LinkedList(0);
 myLinkedList.push(1);
 myLinkedList.push(2);
 myLinkedList.push(3);
-console.log(myLinkedList)
-console.log(myLinkedList.set(3, 20))
+// console.log(myLinkedList)
+console.log(myLinkedList.insert(0, 20))
 console.log(myLinkedList)
 // myLinkedList.pop();
 // myLinkedList.unshift(0);
