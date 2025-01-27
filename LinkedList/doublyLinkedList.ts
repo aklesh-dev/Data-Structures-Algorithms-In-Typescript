@@ -41,12 +41,36 @@ class DoublyLinkedList<T> {
     return this;
   };
 
+  // Pop method. Remove the last node from the list.
+  pop():DoblyNode<T> {
+    // --If list is empty
+    if (!this.head) {
+      return undefined;
+    };
+
+    let tempNode = this.tail;  //--> assigned the current tail node, which is the node to be removed.
+    
+    // If list have 1 element.
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    };
+
+    this.tail = this.tail.prev;   //--> tail pointer is updated to point to the node that was previously before the current tail node
+    this.tail.next = null;    //--> remove the pointer to the next node from the new tail.
+    tempNode.prev = null;  //--> remove the prev pointer from the removed node.
+    this.length--;    //--> decrement the length by 1
+    return tempNode;  //--> return the removed node.
+    
+  };
+
 }
 
 let myDoublyLinkedList = new DoublyLinkedList<any>(0);
 myDoublyLinkedList.push(1);
 myDoublyLinkedList.push('Jhon');
-console.log(myDoublyLinkedList);
+myDoublyLinkedList.push(3);
+console.log(myDoublyLinkedList.pop());
 
 // const secondDoublLinkedList = new DoublyLinkedList<string>("jhon");
 // console.log(secondDoublLinkedList)
