@@ -64,13 +64,31 @@ class DoublyLinkedList<T> {
     
   };
 
+  // Unshift method. Add new node at first of the list.
+  unshift(value:T){
+    let newNode = new DoblyNode(value);  // create a new node.
+    // Check if list is empty, create a new node
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      // Add new node at first of the list.
+      newNode.next = this.head;  //--> reference the next pointer to the previous head node
+      this.head.prev = newNode;      // --> reference the prev pointer to the new node.
+      this.head = newNode;    //--> update the head node with the new node.
+    }
+    this.length++;
+    return this;
+  };
+
 }
 
 let myDoublyLinkedList = new DoublyLinkedList<any>(0);
 myDoublyLinkedList.push(1);
 myDoublyLinkedList.push('Jhon');
 myDoublyLinkedList.push(3);
-console.log(myDoublyLinkedList.pop());
+myDoublyLinkedList.unshift(4)
+console.log(myDoublyLinkedList);
 
 // const secondDoublLinkedList = new DoublyLinkedList<string>("jhon");
 // console.log(secondDoublLinkedList)
