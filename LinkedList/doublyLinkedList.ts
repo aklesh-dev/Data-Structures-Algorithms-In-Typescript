@@ -81,6 +81,27 @@ class DoublyLinkedList<T> {
     return this;
   };
 
+  // Shift method. Remove the first node from the list.
+  shift() {
+    // If list is empty
+    if (!this.head) {
+      return undefined;
+    }
+    else if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    }
+    else {
+      // Remove the first node
+      let temp = this.head;   //--> assign temp with the head node.
+      this.head = this.head.next;  //--> assign head node with the next node.
+      this.head.prev = null;  //--> remove link to prev node.
+      temp.next = null;  //--> remove link to next node.
+      this.length--;
+      return temp;
+    }
+  };
+
 }
 
 let myDoublyLinkedList = new DoublyLinkedList<any>(0);
@@ -88,6 +109,7 @@ myDoublyLinkedList.push(1);
 myDoublyLinkedList.push('Jhon');
 myDoublyLinkedList.push(3);
 myDoublyLinkedList.unshift(4)
+console.log(myDoublyLinkedList.shift());
 console.log(myDoublyLinkedList);
 
 // const secondDoublLinkedList = new DoublyLinkedList<string>("jhon");
