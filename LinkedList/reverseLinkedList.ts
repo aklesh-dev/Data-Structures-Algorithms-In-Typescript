@@ -46,8 +46,8 @@ class ReversedLinkedList<T> {
     for (let i = 0; i < this.length; i++) {
       next = temp.next;  //--> next pointer is assign to next element of head node.
       temp.next = prev;  // --> temp next is link to prev pointer in reverse.
-      prev = temp;  // --> prev pointer is assign to tail node which was head node.
-      temp = next; // --> temp is assign to next element, next to previous node.
+      prev = temp;  // --> prev pointer is assign to the current node which is being reversed
+      temp = next; // --> temp is assign to next element, which is the next node in the original list
     }
   };
 
