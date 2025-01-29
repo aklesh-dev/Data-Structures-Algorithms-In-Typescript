@@ -32,9 +32,26 @@ class Stack<T> {
     }
     this.length++;
   };
-   
+
+  // Pop method. Remove first node from the stack list.
+  pop(){
+    // if list is empty
+    if (this.length === 0) {
+      return undefined;
+    } else {
+      let temp = this.first;  //--> set temp variable to first node.
+      this.first = this.first.next;  //--> set first property to next pointer link to previous first node.
+      temp.next = null;  //--> remove the temp node which was first node.
+      this.length--;
+      return temp;
+    }
+
+  };
+
 };
 
 let theStack = new Stack(0);
-theStack.push(1)
+// theStack.push(1)
+// theStack.push(2)
+theStack.pop()
 console.log(theStack)
