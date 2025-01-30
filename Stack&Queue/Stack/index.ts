@@ -48,10 +48,31 @@ class Stack<T> {
 
   };
 
+  // min method. Return the minimum value.
+  min():T{
+    // check if stack is empty
+    if (this.length === 0) {
+      return undefined;
+    }
+
+    let current = this.first;
+    let minValue = current.value;
+
+    while (current.next) {
+      current = current.next;
+
+      if (current.value < minValue) {
+        // console.log("current value:",current.value, "min value:",minValue)
+        minValue = current.value;
+      }
+    }
+    return minValue;    
+  };
+
 };
 
 let theStack = new Stack(0);
-// theStack.push(1)
-// theStack.push(2)
-theStack.pop()
-console.log(theStack)
+theStack.push(1)
+theStack.push(2)
+// theStack.pop()
+console.log(theStack.min())
