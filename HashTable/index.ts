@@ -19,7 +19,7 @@ class HashTable<T> {
   };
 
   // set method.
-  set(key:string, value:string) {
+  set(key:string, value:string): this {
     const index = this._hashFunction(key);
     // console.log("Index:", index);
 
@@ -29,9 +29,22 @@ class HashTable<T> {
       this.keyMap[index].push([key, value]);
     }
     return this;
-  }
+  };
+
+  // get method.
+  get(key:string){
+    const index = this._hashFunction(key);
+    if(this.keyMap[index]){
+      for(let i = 0; i < this.keyMap[index].length; i++ ){
+        if(this.keyMap[index][i][0] === key){
+          return this.keyMap[index][i][1]
+        }
+      }
+      return undefined;
+    }
+  };
 }
 
 const phoneBook = new HashTable();
 phoneBook.set("Izumi", "555-444-333");
-console.log(phoneBook);
+console.log(phoneBook.get("Izumi"));
