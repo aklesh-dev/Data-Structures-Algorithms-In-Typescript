@@ -84,6 +84,30 @@ class BST {
     return false;
   }
 
+  // --Breath First Search--
+  bfs(){
+    let current = this.root;
+    let queue = []
+    let data = []
+
+    queue.push(current);
+
+    // -- while loop run until it reaches null | 0
+    // --iterate through all element.
+    while(queue.length){
+      current = queue.shift(); //--remove the first element.
+      data.push(current.value); //--add value from the queue array to data array.
+
+      // check left pointer if there is node push it to queue array.
+      if(current.left) queue.push(current.left);
+      // check right pointer if there is node push it to queue array.
+      if(current.right) queue.push(current.right);
+    }
+
+    return data;
+    
+  };
+
 }
 
 const tree = new BST();
@@ -93,4 +117,5 @@ tree.insert(3);
 tree.insert(1);
 tree.insert(7);
 tree.insert(9);
-console.log(tree.includes(9));
+// console.log(tree.includes(9));
+console.log(tree.bfs())

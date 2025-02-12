@@ -27,3 +27,7 @@ A BST is a special kind of binary tree used to organize data in a sorted way. It
 ### Note:
 - Go left if your value is smaller than the current branch.
 - Go right if your value is bigger.
+
+## Breadth First Search
+
+![Breadth First Search](./img/breathFirstSearch.png)
