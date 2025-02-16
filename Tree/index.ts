@@ -108,6 +108,51 @@ class BST {
     
   };
 
+  // --Depth First Search (DFS) PreOrder--
+  dfsPerOrder(node = this.root, data=[]){
+    if(node === null) return data;
+    console.log('----', data);
+    // push the node value inside array.
+    data.push(node.value);
+
+    // Recursively traverse the left subtree 
+    if(node.left) this.dfsPerOrder(node.left, data)
+    // Recursively traverse the right subtree
+    if(node.right) this.dfsPerOrder(node.right, data);
+    return data;
+  };
+
+  // --Depth First Search Post order--
+  dfsPostOrder(node = this.root, data=[]){
+    // Base case:
+    if(node === null) return data;
+    // console.log('----', data); 
+
+    // Recursively traverse the left subtree 
+    if(node.left) this.dfsPostOrder(node.left, data)
+    // Recursively traverse the right subtree
+    if(node.right) this.dfsPostOrder(node.right, data);
+    // push the value inside array.
+    data.push(node.value);
+    return data;
+  };
+
+  // --Depth First Search Inorder--
+  dfsInorder(node = this.root, data=[]){
+    // Base case:
+    if(node === null) return data;
+    // console.log('----', data); 
+
+    // Recursively traverse the left subtree 
+    if(node.left) this.dfsInorder(node.left, data)
+      // push the value inside array.
+      data.push(node.value);
+    // Recursively traverse the right subtree
+    if(node.right) this.dfsInorder(node.right, data);
+
+    return data;
+  };
+
 }
 
 const tree = new BST();
@@ -118,4 +163,7 @@ tree.insert(1);
 tree.insert(7);
 tree.insert(9);
 // console.log(tree.includes(9));
-console.log(tree.bfs())
+// console.log(tree.bfs())
+// console.log(tree.dfsPerOrder())
+// console.log(tree.dfsPostOrder())
+console.log(tree.dfsInorder())
